@@ -1,41 +1,12 @@
-# (A)NTE js lcd开发教程
+# VelaVideoPlayer (QuickApp for Mi Watch)
 
-<style>
-/* This element defines the size the iframe will take.
-   In this example we want to have a ratio of 25:14 */
-.aspect-ratio {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* The height of the item will now be 56.25% of the width. */
-}
-/* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
-.aspect-ratio iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-</style>
+最小示例：在手表上播放内置视频或下载后播放临时文件。
 
-<div class="aspect-ratio">
-<iframe src="//player.bilibili.com/player.html?aid=818254400&bvid=BV1kG4y1G7yx&cid=910363279&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
+运行/测试
+1. 在仓库中打包的 Zip 中会包含一个示例视频 `Common/demo.mp4`（由 Actions 在构建时下载）。
+2. 在 MiWatchEmulator / AstroBox / 真机上传并运行此 QuickApp。
+3. 若要本地构建或打包，请使用你熟悉的 Vela/QuickApp 打包工具（示例项目不包含特定打包脚本）。
 
-![Feature Grid](img/featgrid.jpg)
-
-  
-  
-  
-## js制作方法
-
-请在左侧侧边栏内查看。
-  
-  
-  
-## 下载模板
-
-请参见 [下载](download.md)。
-
-
+说明
+- 内置视频路径：`/Common/demo.mp4`
+- 下载示例使用：fetch.fetch({ responseType: 'file' })，返回的 res.data 可直接赋给 video 的 src。
