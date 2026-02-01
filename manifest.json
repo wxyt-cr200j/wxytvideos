@@ -1,0 +1,9 @@
+{
+  "name": "VelaVideoPlayer",
+  "version": "1.0.0",
+  "description": "Simple Vela quickapp that plays local or downloaded video",
+  "app": {
+    "id": "com.example.velavideoplayer",
+    "name": "Vela Video Player"
+  }
+}
