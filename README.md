@@ -1,60 +1,50 @@
-## 构建与 CI 集成指南
+# Vela 快应用 日历示例
 
-本指南旨在为用户提供详细的构建和 CI 集成步骤，并引导用户参考小米官方 Vela/QuickApp 构建文档。
+欢迎使用快应用-Vela日历模板
+项目主要展示一个基础的日历示例模板
 
-### 1. 本地构建
+项目开发相关命令
 
-首先，确保安装了所需的构建工具和依赖项。然后使用以下命令进行本地构建：
+1. 开发
 
 ```bash
-# 官方构建命令示例
-<PLACEHOLDER_FOR_BUILD_COMMAND>
+npm install
+npm run start
 ```
 
-### 2. CI 构建
+2. 构建
 
-在 GitHub Actions 中设置 CI 构建流程。以下是一个 GitHub Actions 示例：
-
-```yaml
-name: CI Build
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-
-    - name: Build Project
-      run: |
-        # 官方构建命令示例
-        <PLACEHOLDER_FOR_BUILD_COMMAND>
+```bash
+npm run build
+npm run release
 ```
 
-### 3. 处理签名密钥
+3. 调试
 
-为了确保构建的应用程序可以签名并上传，您需要通过 GitHub Secrets 来存储和管理您的签名密钥。请遵循以下步骤：
+```bash
+npm run watch
+```
 
-1. 在您的 GitHub 仓库中，前往 Settings > Secrets > Actions。
-2. 创建新的 Secret，命名为 `SIGNING_KEY`，并粘贴您的签名密钥。
+项目目录结构（src）
 
-### 4. 在 MiWatchEmulator 和真实设备上测试
+.
+├── manifest.json //描述项目配置信息的manifest 文件（关于该文件的详细说明请参考文档，
+│   [小米Vela快速应用框架Manifest文档](https://iot.mi.com/vela/quickapp/zh/content/framework/manifest.html)）
+│    
+├── app.ux //放置项目公共资源脚本的app.ux 文件
+├── pages  //应用主要页面代码
+│   ├── index
+│   |   └── index.ux // 万年历首页
+│   ├── detail
+│   |   └── detail.ux // 具体日期详情页（阴历，阳历，星期）
+│   └── logo
+│       └── logo.ux  // 应用加载过渡页 （logo与名称展示）
 
-使用 MiWatchEmulator 进行测试，确保您的应用程序在模拟器上运行良好。对于真实设备，您需要将构建的 APK 文件安装并测试功能。 
+├── i18n（国际化文件夹，具体参考快应用文档）
+│   ├── defaults.json
+│   ├── zh-CN.json
+│   └── en-US.json
+└── common //存放公共资源文件夹
 
-### 5. 视频编码与文件大小注意事项
-
-在编码视频时，请确保使用适当的比特率和分辨率，以避免文件过大。建议在满足质量要求的前提下，尽量压缩文件大小。 
-
-如需进一步的指导和信息，请参考小米官方文档。
+了解更多
+你可以通过我们的官方文档熟悉和了解快应用，参考此链接: https://doc.openvela.com/document?id=198&version=trunk&language=cn
